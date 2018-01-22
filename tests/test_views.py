@@ -101,7 +101,7 @@ def test_redirect_uri(views_fixture):
             state = serializer.loads(
                 parse_qs(urlparse(resp.location).query)['state'][0]
             )
-            assert url == state['next']
+            assert urlparse(url).path == state['next']
 
 
 def test_login(views_fixture):
